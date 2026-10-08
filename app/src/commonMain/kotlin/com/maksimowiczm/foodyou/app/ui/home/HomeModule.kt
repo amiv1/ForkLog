@@ -12,7 +12,12 @@ import org.koin.core.module.Module
 import org.koin.core.module.dsl.viewModel
 
 fun Module.home() {
-    viewModel { HomeViewModel(settingsRepository = userPreferencesRepository()) }
+    viewModel {
+        HomeViewModel(
+            settingsRepository = userPreferencesRepository(),
+            observeDiaryMealsUseCase = get(),
+        )
+    }
     viewModel {
         MealsCardsViewModel(
             observeDiaryMealsUseCase = get(),

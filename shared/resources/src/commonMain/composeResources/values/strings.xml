@@ -144,6 +144,7 @@
     <string name="action_go_back">Go back</string>
     <string name="action_tap_to_allow_access">Tap to allow access</string>
     <string name="action_create">Create</string>
+    <string name="action_share">Share</string>
     <string name="action_clear">Clear</string>
     <string name="action_cancel">Cancel</string>
     <string name="action_go_to_settings">Go to settings</string>

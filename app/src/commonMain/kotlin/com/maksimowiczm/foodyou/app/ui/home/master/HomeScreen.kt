@@ -44,6 +44,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.maksimowiczm.foodyou.app.ui.common.utility.rememberShareTextAction
 import com.maksimowiczm.foodyou.app.ui.home.calendar.CalendarCard
 import com.maksimowiczm.foodyou.app.ui.home.goals.GoalsCard
 import com.maksimowiczm.foodyou.app.ui.home.meals.card.MealsCards
@@ -129,6 +130,8 @@ fun HomeScreen(
     val order by viewModel.homeOrder.collectAsStateWithLifecycle()
     val homeState = rememberHomeState()
     val snackbarHostState = remember { SnackbarHostState() }
+    val shareTextAction = rememberShareTextAction()
+    val noMealsLoggedMessage = stringResource(Res.string.neutral_no_food_found)
 
     val density = LocalDensity.current
     val coroutineScope = rememberCoroutineScope()
@@ -245,6 +248,21 @@ fun HomeScreen(
                             onClick = {
                                 showMenu = false
                                 onDailyGoals()
+                            },
+                        )
+                        DropdownMenuItem(
+                            text = { Text(stringResource(Res.string.action_share)) },
+                            modifier = Modifier.testTag(TestTags.HomeShareMenuItem),
+                            onClick = {
+                                showMenu = false
+                                coroutineScope.launch {
+                                    val text = viewModel.buildShareText(selectedDate)
+                                    if (text.isBlank()) {
+                                        snackbarHostState.showSnackbar(noMealsLoggedMessage)
+                                    } else {
+                                        shareTextAction(text)
+                                    }
+                                }
                             },
                         )
                         DropdownMenuItem(

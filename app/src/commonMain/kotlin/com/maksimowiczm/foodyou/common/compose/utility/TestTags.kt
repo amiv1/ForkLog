@@ -37,6 +37,9 @@ internal object TestTags {
     /** Home screen's overflow menu item navigating to the "My food and recipes" screen. */
     const val HomeMyFoodAndRecipesMenuItem = "home_my_food_and_recipes_menu_item"
 
+    /** Home screen's overflow menu item sharing the selected date's meals as text. */
+    const val HomeShareMenuItem = "home_share_menu_item"
+
     /** "My food and recipes" screen's "+" toolbar button (create product/recipe). */
     const val YourFoodCreateButton = "your_food_create_button"
 
