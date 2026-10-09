@@ -60,6 +60,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -216,6 +217,7 @@ fun YourFoodScreen(
                 .padding(top = paddingValues.calculateTopPadding())
                 .imePadding()
         ) {
+            val focusManager = LocalFocusManager.current
             var searchFieldHeight by remember { mutableIntStateOf(0) }
             val density = LocalDensity.current
 
@@ -298,6 +300,7 @@ fun YourFoodScreen(
                         .shadow(2.dp, MaterialTheme.shapes.medium)
                         .testTag(TestTags.YourFoodSearchField),
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+                onKeyboardAction = { focusManager.clearFocus() },
                 placeholder = { Text(stringResource(Res.string.action_search)) },
                 leadingIcon = {
                     Icon(imageVector = Icons.Outlined.Search, contentDescription = null)
