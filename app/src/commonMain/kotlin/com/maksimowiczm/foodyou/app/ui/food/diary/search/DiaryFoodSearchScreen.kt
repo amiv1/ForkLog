@@ -155,14 +155,12 @@ fun DiaryFoodSearchScreen(
                     Modifier.padding(paddingValues)
                         .consumeWindowInsets(paddingValues)
                         .nestedScroll(scrollBehavior.nestedScrollConnection),
+                // Placed above the search bar and category toggles so it doesn't block
+                // interaction with them while visible.
+                snackbarHost = { SnackbarHost(snackBarHostState) },
             )
         }
 
-    Scaffold(
-        modifier = modifier,
-        topBar = topBar,
-        snackbarHost = { SnackbarHost(snackBarHostState) },
-        content = content,
-    )
+    Scaffold(modifier = modifier, topBar = topBar, content = content)
 }
 

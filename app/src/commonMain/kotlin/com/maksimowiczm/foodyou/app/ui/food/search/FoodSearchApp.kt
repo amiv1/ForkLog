@@ -62,6 +62,7 @@ fun FoodSearchApp(
     onUpdateOpenFoodFactsCredentials: () -> Unit,
     modifier: Modifier = Modifier,
     excludedRecipe: FoodId.Recipe? = null,
+    snackbarHost: @Composable () -> Unit = {},
 ) {
     val viewModel: FoodSearchViewModel = koinViewModel { parametersOf(excludedRecipe) }
 
@@ -73,6 +74,7 @@ fun FoodSearchApp(
         onUpdateUsdaApiKey = onUpdateUsdaApiKey,
         onUpdateOpenFoodFactsCredentials = onUpdateOpenFoodFactsCredentials,
         modifier = modifier,
+        snackbarHost = snackbarHost,
     )
 }
 
@@ -86,6 +88,7 @@ private fun FoodSearchApp(
     onUpdateOpenFoodFactsCredentials: () -> Unit,
     modifier: Modifier = Modifier,
     appState: FoodSearchAppState = rememberFoodSearchAppState(),
+    snackbarHost: @Composable () -> Unit = {},
 ) {
     val coroutineScope = rememberCoroutineScope()
     val onSearch: (String?) -> Unit =
@@ -149,6 +152,10 @@ private fun FoodSearchApp(
                         .padding(vertical = 8.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
+                // Snackbar has its own 12dp outer padding; 4dp + 12dp aligns it with the 16dp
+                // search bar edges
+                Box(Modifier.fillMaxWidth().padding(horizontal = 4.dp)) { snackbarHost() }
+
                 val error = pages?.loadState?.error as? RemoteFoodException
 
                 when (val ex = error) {
