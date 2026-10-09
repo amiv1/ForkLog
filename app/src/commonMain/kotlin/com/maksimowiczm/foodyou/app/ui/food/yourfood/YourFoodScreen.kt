@@ -13,6 +13,9 @@ import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
+import androidx.compose.ui.zIndex
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -280,6 +283,7 @@ fun YourFoodScreen(
                 modifier =
                     Modifier.fillMaxWidth()
                         .align(Alignment.BottomCenter)
+                        .zIndex(1f)
                         .windowInsetsPadding(
                             WindowInsets.systemBars
                                 .only(WindowInsetsSides.Bottom + WindowInsetsSides.Horizontal)
@@ -324,7 +328,15 @@ fun YourFoodScreen(
 
             if (pages.itemCount == 0 && pages.loadState.append !is LoadState.Loading) {
                 Column(
-                    modifier = Modifier.padding(top = 32.dp).align(Alignment.TopCenter),
+                    modifier =
+                        Modifier.fillMaxSize()
+                            .verticalScroll(rememberScrollState())
+                            .padding(top = 32.dp)
+                            .padding(
+                                bottom =
+                                    density.run { searchFieldHeight.toDp() } +
+                                        SearchFieldVerticalPadding
+                            ),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
