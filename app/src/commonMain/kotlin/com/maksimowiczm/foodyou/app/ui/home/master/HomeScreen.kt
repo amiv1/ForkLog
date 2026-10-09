@@ -34,6 +34,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -133,6 +134,7 @@ fun HomeScreen(
     val snackbarHostState = remember { SnackbarHostState() }
     val dateFormatter = LocalDateFormatter.current
     val shareTextAction = rememberShareTextAction()
+    var shareText by rememberSaveable { mutableStateOf<String?>(null) }
     val noMealsLoggedMessage = stringResource(Res.string.neutral_no_food_found)
 
     val density = LocalDensity.current
@@ -193,6 +195,18 @@ fun HomeScreen(
     }
 
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
+
+    shareText?.let { text ->
+        ShareMealsModalBottomSheet(
+            text = text,
+            onShare = {
+                shareTextAction(text)
+                shareText = null
+            },
+            onDismissRequest = { shareText = null },
+        )
+    }
+
     Scaffold(
         modifier = modifier,
         snackbarHost = { SnackbarHost(snackbarHostState) },
@@ -258,14 +272,15 @@ fun HomeScreen(
                             onClick = {
                                 showMenu = false
                                 coroutineScope.launch {
-                                    val text = viewModel.buildShareText(
+                                    val text =
+                                        viewModel.buildShareText(
                                             selectedDate,
                                             dateFormatter.formatDate(selectedDate),
                                         )
                                     if (text.isBlank()) {
                                         snackbarHostState.showSnackbar(noMealsLoggedMessage)
                                     } else {
-                                        shareTextAction(text)
+                                        shareText = text
                                     }
                                 }
                             },

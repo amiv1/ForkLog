@@ -39,6 +39,10 @@ internal object TestTags {
 
     /** Home screen's overflow menu item sharing the selected date's meals as text. */
     const val HomeShareMenuItem = "home_share_menu_item"
+    const val HomeShareSheet = "home_share_sheet"
+    const val HomeShareSheetText = "home_share_sheet_text"
+    const val HomeShareSheetCopyButton = "home_share_sheet_copy_button"
+    const val HomeShareSheetShareButton = "home_share_sheet_share_button"
 
     /** "My food and recipes" screen's "+" toolbar button (create product/recipe). */
     const val YourFoodCreateButton = "your_food_create_button"
