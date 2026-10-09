@@ -39,10 +39,11 @@ internal class HomeViewModel(
      * Builds a plain-text summary of [date]'s logged meals, one section per non-empty meal (e.g.
      * "Breakfast") followed by its entries (e.g. "- Oatmeal (50 g, 100 kcal, Fats: 3 g, Proteins:
      * 5 g, Carbohydrates: 5 g)"). Meals without any entries are omitted. Returns an empty string
-     * if nothing was logged for [date].
+     * if nothing was logged for [date]. Otherwise the first line is [formattedDate].
      */
-    suspend fun buildShareText(date: LocalDate): String {
-        val meals = observeDiaryMealsUseCase.observe(date).first()
+    suspend fun buildShareText(date: LocalDate, formattedDate: String): String {
+        val meals = observeDiaryMealsUseCase.observe(date).first().filter { it.entries.isNotEmpty() }
+        if (meals.isEmpty()) return ""
 
         val kcal = getString(Res.string.unit_kcal)
         val gram = getString(Res.string.unit_gram_short)
@@ -52,38 +53,39 @@ internal class HomeViewModel(
         val carbohydrates = getString(Res.string.nutriment_carbohydrates)
 
         return buildString {
-                meals
-                    .filter { it.entries.isNotEmpty() }
-                    .forEach { diaryMeal ->
-                        appendLine(diaryMeal.meal.name)
+                appendLine(formattedDate)
+                appendLine()
 
-                        diaryMeal.entries.forEach { entry ->
-                            val parts = mutableListOf<String>()
+                meals.forEach { diaryMeal ->
+                    appendLine(diaryMeal.meal.name)
 
-                            val foodEntry = entry as? FoodDiaryEntry
-                            if (foodEntry != null) {
-                                val suffix = if (foodEntry.food.isLiquid) milliliter else gram
-                                parts += "${foodEntry.weight.roundToInt()} $suffix"
-                            }
+                    diaryMeal.entries.forEach { entry ->
+                        val parts = mutableListOf<String>()
 
-                            entry.nutritionFacts.energy.value?.roundToInt()?.let {
-                                parts += "$it $kcal"
-                            }
-                            entry.nutritionFacts.fats.value?.roundToInt()?.let {
-                                parts += "$fats: $it $gram"
-                            }
-                            entry.nutritionFacts.proteins.value?.roundToInt()?.let {
-                                parts += "$proteins: $it $gram"
-                            }
-                            entry.nutritionFacts.carbohydrates.value?.roundToInt()?.let {
-                                parts += "$carbohydrates: $it $gram"
-                            }
-
-                            appendLine("- ${entry.name} (${parts.joinToString(", ")})")
+                        val foodEntry = entry as? FoodDiaryEntry
+                        if (foodEntry != null) {
+                            val suffix = if (foodEntry.food.isLiquid) milliliter else gram
+                            parts += "${foodEntry.weight.roundToInt()} $suffix"
                         }
 
-                        appendLine()
+                        entry.nutritionFacts.energy.value?.roundToInt()?.let {
+                            parts += "$it $kcal"
+                        }
+                        entry.nutritionFacts.fats.value?.roundToInt()?.let {
+                            parts += "$fats: $it $gram"
+                        }
+                        entry.nutritionFacts.proteins.value?.roundToInt()?.let {
+                            parts += "$proteins: $it $gram"
+                        }
+                        entry.nutritionFacts.carbohydrates.value?.roundToInt()?.let {
+                            parts += "$carbohydrates: $it $gram"
+                        }
+
+                        appendLine("- ${entry.name} (${parts.joinToString(", ")})")
                     }
+
+                    appendLine()
+                }
             }
             .trim()
     }

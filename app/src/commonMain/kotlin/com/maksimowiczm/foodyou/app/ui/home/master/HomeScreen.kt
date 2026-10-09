@@ -52,6 +52,7 @@ import com.maksimowiczm.foodyou.app.ui.home.poll.PollsCard
 import com.maksimowiczm.foodyou.app.ui.home.shared.HomeState
 import com.maksimowiczm.foodyou.app.ui.home.shared.rememberHomeState
 import com.maksimowiczm.foodyou.common.compose.extension.add
+import com.maksimowiczm.foodyou.common.compose.utility.LocalDateFormatter
 import com.maksimowiczm.foodyou.common.compose.utility.TestTags
 import com.maksimowiczm.foodyou.settings.domain.entity.HomeCard
 import com.valentinilk.shimmer.Shimmer
@@ -130,6 +131,7 @@ fun HomeScreen(
     val order by viewModel.homeOrder.collectAsStateWithLifecycle()
     val homeState = rememberHomeState()
     val snackbarHostState = remember { SnackbarHostState() }
+    val dateFormatter = LocalDateFormatter.current
     val shareTextAction = rememberShareTextAction()
     val noMealsLoggedMessage = stringResource(Res.string.neutral_no_food_found)
 
@@ -256,7 +258,10 @@ fun HomeScreen(
                             onClick = {
                                 showMenu = false
                                 coroutineScope.launch {
-                                    val text = viewModel.buildShareText(selectedDate)
+                                    val text = viewModel.buildShareText(
+                                            selectedDate,
+                                            dateFormatter.formatDate(selectedDate),
+                                        )
                                     if (text.isBlank()) {
                                         snackbarHostState.showSnackbar(noMealsLoggedMessage)
                                     } else {
