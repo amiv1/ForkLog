@@ -131,6 +131,7 @@
     <string name="action_go_back">Voltar</string>
     <string name="action_tap_to_allow_access">Toque para permitir acesso</string>
     <string name="action_create">Criar</string>
+    <string name="action_share">Compartilhar</string>
     <string name="action_clear">Limpar</string>
     <string name="action_cancel">Cancelar</string>
     <string name="action_go_to_settings">Ir para as configurações</string>

@@ -135,6 +135,7 @@
     <string name="action_go_back">Wróć</string>
     <string name="action_tap_to_allow_access">Kliknij, aby zezwolić</string>
     <string name="action_create">Stwórz</string>
+    <string name="action_share">Udostępnij</string>
     <string name="action_clear">Wyczyść</string>
     <string name="action_cancel">Anuluj</string>
     <string name="action_go_to_settings">Przejdź do ustawień</string>

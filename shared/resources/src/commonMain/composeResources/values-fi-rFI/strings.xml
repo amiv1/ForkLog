@@ -132,6 +132,7 @@
     <string name="action_go_back">Palaa</string>
     <string name="action_tap_to_allow_access">Salli pääsy napauttamalla</string>
     <string name="action_create">Luo</string>
+    <string name="action_share">Jaa</string>
     <string name="action_clear">Tyhjennä</string>
     <string name="action_cancel">Peruuta</string>
     <string name="action_go_to_settings">Siirry asetuksiin</string>

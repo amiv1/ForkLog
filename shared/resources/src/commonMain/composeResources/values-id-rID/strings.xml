@@ -135,6 +135,7 @@
     <string name="action_go_back">Kembali</string>
     <string name="action_tap_to_allow_access">Ketuk untuk mengizinkan akses</string>
     <string name="action_create">Buat</string>
+    <string name="action_share">Bagikan</string>
     <string name="action_clear">Bersihkan</string>
     <string name="action_cancel">Batalkan</string>
     <string name="action_go_to_settings">Pergi ke pengaturan</string>

@@ -132,6 +132,7 @@
     <string name="action_go_back">Vissza</string>
     <string name="action_tap_to_allow_access">Koppintson a hozzáférés engedélyezéséhez</string>
     <string name="action_create">Létrehozás</string>
+    <string name="action_share">Megosztás</string>
     <string name="action_clear">Törlés</string>
     <string name="action_cancel">Mégse</string>
     <string name="action_go_to_settings">Beállításokhoz ugrás</string>

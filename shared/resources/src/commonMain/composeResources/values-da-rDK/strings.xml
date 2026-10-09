@@ -160,6 +160,7 @@
     <string name="action_go_back">Gå tilbage</string>
     <string name="action_tap_to_allow_access">Tryk for at tillade adgang</string>
     <string name="action_create">Opret</string>
+    <string name="action_share">Del</string>
     <string name="action_clear">Ryd</string>
     <string name="action_cancel">Afbryd</string>
     <string name="action_go_to_settings">Gå til Indstillinger</string>

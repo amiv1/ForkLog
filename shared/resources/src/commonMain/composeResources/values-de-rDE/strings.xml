@@ -132,6 +132,7 @@
     <string name="action_go_back">Gehe zurück</string>
     <string name="action_tap_to_allow_access">Tippe, um den Zugriff zu erlauben</string>
     <string name="action_create">Erstellen</string>
+    <string name="action_share">Teilen</string>
     <string name="action_clear">Löschen</string>
     <string name="action_cancel">Abbrechen</string>
     <string name="action_go_to_settings">Zu den Einstellungen</string>

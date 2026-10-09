@@ -131,6 +131,7 @@
     <string name="action_go_back">Tornar</string>
     <string name="action_tap_to_allow_access">Toca per permetre l'accés</string>
     <string name="action_create">Crear</string>
+    <string name="action_share">Comparteix</string>
     <string name="action_clear">Esborrar</string>
     <string name="action_cancel">Cancel·lar</string>
     <string name="action_go_to_settings">Anar a configuració</string>

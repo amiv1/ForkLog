@@ -136,6 +136,7 @@
     <string name="action_go_back">Zpět</string>
     <string name="action_tap_to_allow_access">Klikněte pro přidání přístupu</string>
     <string name="action_create">Vytvořit</string>
+    <string name="action_share">Sdílet</string>
     <string name="action_clear">Vyčistit</string>
     <string name="action_cancel">Zrušit</string>
     <string name="action_go_to_settings">Přejít do nastavení</string>

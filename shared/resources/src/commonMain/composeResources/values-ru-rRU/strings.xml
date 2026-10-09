@@ -135,6 +135,7 @@
     <string name="action_go_back">Назад</string>
     <string name="action_tap_to_allow_access">Нажмите, чтобы дать разрешение</string>
     <string name="action_create">Создать</string>
+    <string name="action_share">Поделиться</string>
     <string name="action_clear">Очистить</string>
     <string name="action_cancel">Отменить</string>
     <string name="action_go_to_settings">Перейти в настройки</string>

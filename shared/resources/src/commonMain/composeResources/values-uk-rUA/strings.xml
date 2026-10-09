@@ -142,6 +142,7 @@
     <string name="action_go_back">Повернутися</string>
     <string name="action_tap_to_allow_access">Натисніть, щоб надати доступ</string>
     <string name="action_create">Створити</string>
+    <string name="action_share">Поділитися</string>
     <string name="action_clear">Очистити</string>
     <string name="action_cancel">Скасувати</string>
     <string name="action_go_to_settings">Перейти до налаштувань</string>

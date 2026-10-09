@@ -131,6 +131,7 @@
     <string name="action_go_back">Indietro</string>
     <string name="action_tap_to_allow_access">Tocca per consentire l'accesso</string>
     <string name="action_create">Crea</string>
+    <string name="action_share">Condividi</string>
     <string name="action_clear">Pulisci</string>
     <string name="action_cancel">Annulla</string>
     <string name="action_go_to_settings">Vai alle impostazioni</string>

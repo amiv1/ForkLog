@@ -137,6 +137,7 @@
     <string name="action_go_back">Ga terug</string>
     <string name="action_tap_to_allow_access">Tik aan om toestemming te geven</string>
     <string name="action_create">Aanmaken</string>
+    <string name="action_share">Delen</string>
     <string name="action_clear">Leegmaken</string>
     <string name="action_cancel">Annuleren</string>
     <string name="action_go_to_settings">Ga naar instellingen</string>

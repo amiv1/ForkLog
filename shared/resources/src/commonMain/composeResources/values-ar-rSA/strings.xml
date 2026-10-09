@@ -152,6 +152,7 @@
     <string name="action_go_back">العودة</string>
     <string name="action_tap_to_allow_access">انقر للسماح بالوصول</string>
     <string name="action_create">إنشاء</string>
+    <string name="action_share">مشاركة</string>
     <string name="action_clear">مسح</string>
     <string name="action_cancel">إلغاء</string>
     <string name="action_go_to_settings">الذهاب إلى الإعدادات</string>

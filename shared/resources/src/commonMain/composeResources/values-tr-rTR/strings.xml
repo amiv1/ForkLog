@@ -132,6 +132,7 @@
     <string name="action_go_back">Geri dön</string>
     <string name="action_tap_to_allow_access">Erişime izin vermek için dokun</string>
     <string name="action_create">Oluştur</string>
+    <string name="action_share">Paylaş</string>
     <string name="action_clear">Temizle</string>
     <string name="action_cancel">İptal</string>
     <string name="action_go_to_settings">Ayarlara git</string>

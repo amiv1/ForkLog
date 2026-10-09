@@ -136,6 +136,7 @@
     <string name="action_go_back">Pojdi nazaj</string>
     <string name="action_tap_to_allow_access">Tapnite, če želite dovoliti dostop</string>
     <string name="action_create">Ustvari</string>
+    <string name="action_share">Deli</string>
     <string name="action_clear">Počisti</string>
     <string name="action_cancel">Prekliči</string>
     <string name="action_go_to_settings">Pojdite v nastavitve</string>
