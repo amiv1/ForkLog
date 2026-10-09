@@ -111,13 +111,8 @@ fun YourFoodScreen(
 
     NavigationBackHandler(
         state = rememberNavigationEventState(NavigationEventInfo.None),
-        onBackCompleted = {
-            if (searchFieldState.text.isNotEmpty()) {
-                searchFieldState.clearText()
-            } else {
-                onBack()
-            }
-        },
+        isBackEnabled = searchFieldState.text.isNotBlank(),
+        onBackCompleted = { searchFieldState.clearText() },
     )
 
     var showDeleteDialog by rememberSaveable { mutableStateOf(false) }
